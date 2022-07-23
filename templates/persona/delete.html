@@ -1,0 +1,16 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+{% include 'includes/header.html' %}
+
+<br>
+<div class="callout alert grid-container">
+    <h5>Eliminar Empleado</h5>
+    <form method="post">
+        {% csrf_token %}
+        <p>¿Seguro desea eliminar el empleado <b>{{ item.first_name }} {{ item.last_name }}</b>?</p>
+        <input class="btn btn-primary" type="submit" value="Eliminar">
+    </form>
+</div>
+{% endblock %}

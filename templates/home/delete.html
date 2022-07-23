@@ -1,0 +1,15 @@
+{% extends "../index.html" %}
+
+
+{% block section %}
+<div id="create-persona" class="center shadow-none p-3 mb-5 bg-light rounded">
+    <h1>Eliminar un Nuevo Empleado</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        <p>¿Seguro desea eliminar el empleado <b>{{ item.titulo }} {{ item.subtitulo }}</b>?</p>
+
+        <input class="btn btn-primary" type="submit" value="Eliminar">
+    </form>
+</div>
+{% endblock %}

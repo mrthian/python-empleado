@@ -1,0 +1,18 @@
+<h1>Listar por Kword</h1>
+<div>
+    <form action="" method="GET">
+        <label>Buscar por</label><br>
+        {% csrf_token %}
+        <input type="text" placeholder="ingresar nombre aqui" id="kword" name="kword" /><br>
+        <input type="submit" value="Buscar..">
+    </form>
+
+    {% if data %}
+    <h3>Lista de resultados</h3>
+    <ul>
+        {% for item in data %}
+            <li>{{item}}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+</div>

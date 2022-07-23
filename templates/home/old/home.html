@@ -1,0 +1,37 @@
+{% extends "../index.html" %}
+<h1>Listado de todos los Home Model</h1>
+
+{% block section %}
+
+<div id="listar" class="container">
+    <table class="table p-2 bg-light border">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Title</th>
+                <th scope="col">Short Title</th>
+                <th scope="col">Cantidad</th>
+                <th scope="col">Eliminar</th>
+                <th scope="col">Editar</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for item in data %}
+            <tr>
+                <th scope="row">{{ item.id }}</th>
+                <td>{{ item.titulo }}</td>
+                <td>{{ item.subtitulo }}</td>
+                <td>{{ item.cantidad }}</td>
+                <td><a href="http://127.0.0.1:8000/home/delete/{{ item.id }}"><button class="btn btn-outline-danger">Eliminar</button></a></td>
+                <td><a href="http://127.0.0.1:8000/home/delete/{{ item.id }}"><button class="btn btn-outline-primary">Editar</button></a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<div class="mx-auto" style="width: 200px;">
+    <a class="center" href="http://127.0.0.1:8000/home/create"><button class="btn btn-outline-primary">Crear un nuevo registro</button></a>
+</div>
+
+{% endblock %}

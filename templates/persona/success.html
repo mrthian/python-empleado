@@ -1,0 +1,9 @@
+{% extends "../index.html" %}
+
+
+{% block content %}
+<div id="create-persona" class="shadow-none p-3 mb-5 bg-light rounded">
+    <h1 class="bg-success p-2 text-white ">Empleado creado con éxito</h1>
+    <p><a href="{%url 'persona_app:index' %}">Inicio</a> | <a href="http://127.0.0.1:8000/persona/create">Crear</a></p>
+</div>
+{% endblock %}

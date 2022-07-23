@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% include 'includes/header.html' %}
+
+<div class="grid-container">
+    <div class="grid-x">
+        <h1 class="cell">Lista Empleados</h1>
+        <div class="cell grid-x grid-margin-x">
+            <div class="">
+                <form class="cell grid-x grid-margin-x" method="GET">
+                    {% csrf_token %}
+                    <div class="cell large-7">
+                        <input type="text" id="kword" name="kword" placeholder="Buscar empleado"/>
+                    </div>
+                    <div class="cell large-2">
+                        <button type="submit" class="button success">Buscar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        {% if is_paginated %}
+        <div class="cell center">
+            <nav aria-label="Pagination">
+                <ul class="pagination">
+
+                    {% if page_obj.has_previous %}
+                    <li class="pagination-previous">
+                        <a href="?page={{ page_obj.previous_page_number }}" aria-label="Page 2">Back</a>
+                    </li>
+                    {% endif %}
+
+                    {% for page in paginator.page_range %}
+
+                    {% if page == page_obj.number %}
+                    <li class="current">{{ page }}</li>
+                    {% else %}
+                    <li><a href="?page={{ page }}" aria-label="Page 2">{{ page }}</a></li>
+                    {% endif %}
+
+
+                    {% endfor %}
+
+                    {% if page_obj.has_next %}
+                    <li class="pagination-next">
+                        <a href="?page={{ page_obj.next_page_number }}" aria-label="Page 2">Next</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </div>
+        {% endif %}
+
+        <div class="cell">
+            <table>
+                <thead>
+                <tr>
+                    <th width="15" style="">Id</th>
+                    <th width="150">Full Name</th>
+                    <th width="150">Department</th>
+                    <th width="50">Delete</th>
+                    <th width="50">Edit</th>
+                    <th width="50">Ver</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for item in data %}
+                <tr>
+                    <th scope="row">{{ item.id }}</th>
+                    <td>{{ item.first_name }} {{ item.last_name }}</td>
+                    <td>{{ item.departamento.name }}</td>
+                    <td>
+                        <a class="button radius bordered shadow alert" href="{% url 'persona_app:delete' item.id %}">
+                            Delete
+                        </a>
+                    </td>
+                    <td>
+                        <a class="button radius bordered shadow success" href="{% url 'persona_app:update' item.id %}">
+                            Editar
+                        </a>
+                    </td>
+                    <td><a class="button radius bordered shadow warning" href="{% url 'persona_app:detail' item.id %}">Ver</a></td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+</div>
+{% endblock content %}

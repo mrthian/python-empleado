@@ -1,0 +1,37 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+{% include 'includes/header.html' %}
+
+<div class="grid-container">
+    <div class="grid-x">
+        <h1 class="cell">Modificar Empleado</h1>
+        <div class="cell">
+            <form class="grid-x grid-margin-x" method="POST">
+                {% csrf_token %}
+                <div class="cell large-6">
+                    <label for="">Nombres: {{ form.first_name }}</label>
+                </div>
+                <div class="cell large-6">
+                    <label for="">Apellidos: {{ form.last_name }}</label>
+                </div>
+                <div class="cell large-6">
+                    <label for="">Job: {{ form.job }}</label>
+                </div>
+                <div class="cell large-6">
+                    <label for="">Departamento: {{ form.departamento }}</label>
+                </div>
+                <div class="cell large-12">
+                    <label for="">Habilidad: {{ form.habilidad }}</label>
+                </div>
+                <div class="cell large-12">
+                    <button class="button success large" type="submit">Actualizar</button>
+                    <button class="button alert large" type="reset">Cancelar</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
