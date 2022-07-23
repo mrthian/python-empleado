@@ -1,0 +1,35 @@
+{% extends "../index.html" %}
+
+{% block section %}
+<div id="listar" class="container">
+    <table class="table p-2 bg-light border">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Title</th>
+                <th scope="col">Short</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Eliminar</th>
+                <th scope="col">Editar</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for item in data %}
+            <tr>
+                <th scope="row">{{ item.id }}</th>
+                <td>{{ item.titulo }}</td>
+                <td>{{ item.subtitulo }}</td>
+                <td>{{ item.cantidad }}</td>
+                <td><a href="http://127.0.0.1:8000/home/delete/{{ item.id }}"><button class="btn btn-outline-danger">Eliminar</button></a></td>
+                <td><a href="http://127.0.0.1:8000/home/detail/{{ item.id }}"><button class="btn btn-outline-primary">Editar</button></a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<div class="container center">
+    <a class="btn btn-primary center" href="http://localhost:8000/home/create">Crear</a>
+</div>
+
+{% endblock %}

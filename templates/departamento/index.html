@@ -1,0 +1,46 @@
+{% extends 'index.html' %}
+
+{% block title %}Lista Departamentos {% endblock %}
+
+{% block content %}
+
+{% include 'includes/header.html' %}
+
+<div class="grid-container">
+    <div class="grid-x">
+        <div class="cell">
+            <h1>Lista Departamentos</h1>
+        </div>
+        <div class="cell">
+            <table>
+                <thead>
+                <tr>
+                    <th width="10">Id</th>
+                    <th width="45">Short Name</th>
+                    <th width="150">Full Name</th>
+                    <th width="10">State</th>
+                    <th width="150">Create At</th>
+                    <th width="150">Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for item in data %}
+                <tr>
+                    <td>{{ item.id }}</td>
+                    <td>{{ item.short_name }}</td>
+                    <td>{{ item.name }}</td>
+                    <td>{{ item.state }}</td>
+                    <td>{{ item.create_at }}</td>
+                    <td>
+                        <a class="button" href="{% url 'persona_app:by-area-short' item.short_name %}">Ver Empleados</a>
+                    </td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+</div>
+{% endblock %}

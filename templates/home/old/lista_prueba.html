@@ -1,0 +1,12 @@
+<h1>Listado de HomeView</h1>
+
+{% for item in home_models %}
+    <code>
+        <hr/>
+        <b>Id:</b> {{item.id}}<br/>
+        <b>Title:</b> {{item.titulo}}<br/>
+        <b>subtitulo:</b> {{item.subtitulo}}<br/>
+        <b>Cantidad:</b> {{item.cantidad}}
+    </code>
+{% endfor %}
+<hr/>

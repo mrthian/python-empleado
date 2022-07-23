@@ -1,0 +1,15 @@
+{% extends "../index.html" %}
+
+
+{% block section %}
+<div id="create-persona" class="container">
+    <h1>Crear un Nuevo Empleado</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input class="btn btn-primary" type="submit" value="Guardar">
+        <a class="btn btn-danger" href="http://localhost:8000/home">Cancelar</a>
+    </form>
+</div>
+{% endblock %}

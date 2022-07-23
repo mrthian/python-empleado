@@ -1,0 +1,40 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+{% include 'includes/header.html' %}
+
+<div class="grid-container">
+    <div class="grid-x">
+
+        <!-- title of page -->
+        <div class="cell">
+            <h1>Listar empleados por area </h1>
+        </div>
+        <div class="cell">
+            <table>
+                <thead>
+                <tr>
+                    <th width="10">Id</th>
+                    <th width="50">Employed Full Name</th>
+                    <th width="50">Area Full Name</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for item in data %}
+                <tr>
+                    <td>{{item.id}}</td>
+                    <td>{{item.full_name}}</td>
+                    <td>{{item.departamento.name}}</td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock content %}

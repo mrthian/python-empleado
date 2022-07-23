@@ -1,0 +1,48 @@
+{% extends 'index.html' %}
+
+{% block title %}
+Empleado: {{ data.full_name }}
+{% endblock title%}
+
+{% block content %}
+
+{% include 'includes/header.html' %}
+
+
+<div class="grid-container">
+
+    <div class="media-object callout primary">
+        <div class="media-object-section">
+            <div class="thumbnail">
+                {% if data.avatar %}
+                <img src="{{ data.avatar.url }}" height="150" width="150">
+                {% else %}
+                <img src="" height="150" width="150" alt="not-found">
+                {% endif %}
+            </div>
+        </div>
+        <div class="media-object-section main-section">
+            <h4>{{ data.full_name }}</h4>
+            <p>
+            <ul>
+                <li><strong>Id:</strong> {{ data.id }}</li>
+                <li><strong>Department:</strong> {{ data.departamento.name }}</li>
+                <li><strong>Job:</strong> {{ data.get_job_display }}</li>
+                <li>
+                    <strong>Skill:</strong>
+                    {% for skill in data.habilidad.all %}
+                    {{ skill.habilidad }} |
+                    {% endfor %}
+                </li>
+            </ul>
+            </p>
+        </div>
+    </div>
+
+</div>
+{% endblock content %}
+
+
+
+
+

@@ -1,0 +1,109 @@
+1. Creación del entorno virtual
+Primero se debe crear el entorno virtual python -m <name folder> venv
+
+2. Instalación de paquetes necesarios con pip
+
+Instalar con pip install django
+Instalar postgres pip install psycopg2
+
+3. Crear un proyecto en django
+Con el entorno activo con el siguiente comando django-admin startproject <project name>
+
+    Para iniciar el proyecto se hace con el siguiente comando:
+    <ruta>/manage.py runserver
+
+5. Separamos las configuraciones del setting en varios entornos.
+    5.1 Crear un directorio settings
+    5.2 Crear los settings para los diferentes entornos.
+        - local
+        - dev
+        - prod
+
+6. Ahora vamos a crear las applications.
+    6.1 crear un directorio a la raiz del manage.py
+    6.2 Para crear una aplicación corremos el siguiente comando
+        django-admin startapp <<nombre_app>>
+
+7. Integrar las aplicaciones a todo el proyecto.
+    Ingresar en settings (base) y en INSTALLED_APPS = [] adicionar las nuevas apps
+
+
+Nota para settigns: si no queremos ejecutar runserver --settings=project....., lo que hacemos en
+modificar el manage.py y especificar cual archivo vamos a ejecutar por defecto
+
+
+8. Cuando creamos app, cada app deberia tener su propia URL, por ende creamos un archivo "urls.py" dentro de cada app
+    8.1. luego asociamos la URL a la principal
+
+
+VISTAS BASADAS EN CLASES.
+
+Tipos de vista | Vista Generica
+    - TemplateView
+    - ListView: Para listar algo de una base de datos.
+    - CreateView: Para crear algo en la base de datos.
+    - UpdateView: Actualizar algo en la base de datos.
+
+
+para configurar las rutas, se puede instalar UNIPATH (pip install unipath), para refactorizar las rutas de los template.
+
+para especificar una ruta de templates, lo hacemos en el SETTING, si no hay una confiuración, django asume que debe
+tomarlo de cada APP
+
+adicional a esto podemos normalizar mas en los template. Ejemplo
+
+    - project
+        | - applications
+            | - departamento
+            | - persona
+            | - home
+        | - app <name_application>
+        | - templates
+            | - home
+                - home.html
+            | - departamento
+            | - persona
+        | - manage.py
+        | - requirements.txt
+
+Si se normaliza los templates, recordar que debemos cambiar la views de la app por 'folder/name_template.html'
+
+Tipo de vista ListView: Aplica cuando queremos listar algo de la base de datos
+
+> MODELOS DE DJANGO
+
+1. creamos un modelo hereado de model de django ej class NameClassModel(models.Model)
+
+    para que la clase modelo se plasme en la base de datos debemos ejecutar los comandos de migrate:
+
+    1.1 verificar si hay algo nuevo en los modelos con python manage.py makemigrations
+    1.2 para mandar a ejecutar o crear la migración se hace con python manage.py migrate
+
+Nota: para interactuar con la base de datos sin necesidad de un IDE sql, podemos hacerlo con el admin.py creado en la
+app
+
+para crear el usuario de admin se ejecuta el siguiente comando
+python manage.py createsuperuser.
+
+Ahora, vamos a cambiar de base ed datos a postgres.
+
+1. Instalar postgres
+2. Configurar la conexión en el setting que corresponda
+
+para ejecutar las migraciones sobre la nueva base de datos se ejecuta python manage.py migrate
+NOTA: Si queremos crear las migraciones de cero para que nos guarde los cambios y demas, se debe borrar el contenido
+de la carpeta migrations de cada app.
+
+Si queremos personalizar los nombre de las tablas para que aparezca diferente podemos poner alias.
+
+ejemplo
+
+clas Departament(models.Model):
+    class Meta:
+        verbose_name = 'Mi departamento'
+        verbose_name_plural = ''
+
+    field_1 = models.CharField(...
+
+Las relaciones ManyToManyField: crean nuevas tablas relacionales.
+

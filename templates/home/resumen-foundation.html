@@ -1,0 +1,27 @@
+<!doctype html>
+{% load static %}
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'css/foundation.min.css' %}">
+    <title>Resumen Foundation</title>
+</head>
+<body>
+    <h1>Resumen Foundation</h1>
+    <hr/>
+    <div class="grid-x" style="border: 1px solid green;">
+        <h2 class="cell small-12 large-5" style="border: 1px solid red;">Elemendo 1</h2>
+        <h2 class="cell large-4" style="border: 1px solid blue;">Elemendo 2</h2>
+        <h2 class="cell large-3" style="border: 1px solid gray;">Elemendo 3</h2>
+        <div class="cell large-4 grid-x" style="border: 1px solid yellow;">
+            <h4 class="cell large-2">Otro Elemendo 1</h4>
+            <h4 class="cell large-2">Otro Elemendo 2</h4>
+            <h4 class="">Otro Elemendo 3</h4>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,48 @@
+{% extends "../index.html" %}
+
+{% block title %}Crear Nuevo Empleado{% endblock title %}
+
+{% block content %}
+
+{% include 'includes/header.html' %}
+
+<div id="create-persona" class="grid-container">
+    <h1>Registrar Empleado</h1>
+    <form class="grid-x grid-margin-x" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <!-- Information Demographic -->
+        <fieldset class="fieldset cell grid-x grid-margin-x">
+            <legend>Information Demographic</legend>
+            <div class="cell large-6">
+                <label>First Name: {{ form.first_name }}</label>
+            </div>
+            <div class="cell large-6">
+                <label>Last Name: {{ form.last_name }}</label>
+            </div>
+        </fieldset>
+
+        <fieldset class="fieldset cell grid-x grid-margin-x">
+            <legend>Additional Information</legend>
+            <div class="cell large-6">
+                <label>Job:{{ form.job }}</label>
+            </div>
+            <div class="cell large-6">
+                <label>Area: {{ form.departamento }}</label>
+            </div>
+            <fieldset class="cell callout large-12">
+                <legend> Skill </legend>
+                    <label>{{ form.habilidad }}</label>
+            </fieldset>
+            <div class="cell large-12">
+                <label>Photo: {{ form.avatar }}</label>
+            </div>
+        </fieldset>
+
+        <div class="cell large-12 grid-x grid-margin-x">
+            <button class="button success large-12" type="submit">Crear</button>
+            <a class="button alert large-12" href="{% url 'persona_app:all-employed' %}">Cancelar</a>
+        </div>
+    </form>
+</div>
+{% endblock %}
